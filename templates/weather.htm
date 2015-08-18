@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{{ city }} 天气情况</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   
+
+</head>
+<body>
+<div class="container">
+今日情况：
+<hr >
+<div class="row">
+   <div class="col-md-12">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h3  class="panel-title"><strong>{{data[0]['date']}} &nbsp&nbsp {{data[0]['city']}} &nbsp&nbsp  PM2.5:{{data[0]['pm']}}</strong></h3>
+         </div>
+      <div class="panel-body">
+            <p>{{data[1]['weather_data'][0]['date']}}</p>
+            <p>{{data[1]['weather_data'][0]['weather']}} &nbsp&nbsp&nbsp日/夜：<img src="{{data[1]['weather_data'][0]['dayPictureUrl']}}">  /  <img src="{{data[1]['weather_data'][0]['nightPictureUrl']}}"></p>
+            <p>{{data[1]['weather_data'][0]['wind']}} &nbsp&nbsp&nbsp 温度：{{data[1]['weather_data'][0]['temperature']}}</p>
+      </div>
+</div>
+   </div>
+</div>
+未来三天：
+<hr >
+<div class="row">
+<center>
+<div class="col-md-4">
+   <div class="panel panel-info">
+      <div class="panel-heading">
+      <h4 class="panel-title">
+         {{data[1]['weather_data'][1]['date']}}
+      </h4>
+      </div>
+      <div class="panel-body">
+            <p>{{data[1]['weather_data'][1]['weather']}} &nbsp&nbsp&nbsp日/夜：<img src="{{data[1]['weather_data'][1]['dayPictureUrl']}}">  /  <img src="{{data[1]['weather_data'][1]['nightPictureUrl']}}"></p>
+            <p>{{data[1]['weather_data'][1]['wind']}} &nbsp&nbsp&nbsp 温度：{{data[1]['weather_data'][1]['temperature']}}</p>
+      </div>
+   </div>
+</div>
+<div class="col-md-4">
+   <div class="panel panel-info">
+      <div class="panel-heading">
+      <h4 class="panel-title">
+         {{data[1]['weather_data'][2]['date']}}
+      </h4>
+      </div>
+      <div class="panel-body">
+            <p>{{data[1]['weather_data'][2]['weather']}} &nbsp&nbsp&nbsp日/夜：<img src="{{data[1]['weather_data'][2]['dayPictureUrl']}}">  /  <img src="{{data[1]['weather_data'][2]['nightPictureUrl']}}"></p>
+            <p>{{data[1]['weather_data'][2]['wind']}} &nbsp&nbsp&nbsp 温度：{{data[1]['weather_data'][2]['temperature']}}</p>
+      </div>
+   </div>
+</div>
+<div class="col-md-4">
+   <div class="panel panel-info">
+      <div class="panel-heading">
+      <h4 class="panel-title">
+         {{data[1]['weather_data'][3]['date']}}
+      </h4>
+      </div>
+      <div class="panel-body">
+            <p>{{data[1]['weather_data'][3]['weather']}} &nbsp&nbsp&nbsp日/夜：<img src="{{data[1]['weather_data'][3]['dayPictureUrl']}}">  /  <img src="{{data[1]['weather_data'][3]['nightPictureUrl']}}"></p>
+            <p>{{data[1]['weather_data'][3]['wind']}} &nbsp&nbsp&nbsp 温度：{{data[1]['weather_data'][3]['temperature']}}</p>
+      </div>
+   </div>
+</div>
+</center>
+</div>
+今日指数：
+<hr >
+<div class="row">
+<div class="col-md-4">
+<div class="list-group">
+   <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][0]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][0]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][0]['des']}}
+      </p>
+   </a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="list-group list-group">
+   <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][1]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][1]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][1]['des']}}
+      </p>
+   </a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="list-group">
+   <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][2]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][2]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][2]['des']}}
+      </p>
+   </a>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="list-group">
+      <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][3]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][3]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][3]['des']}}
+      </p>
+   </a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="list-group">
+      <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][4]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][4]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][4]['des']}}
+      </p>
+   </a>
+</div>
+</div>
+<div class="col-md-4">
+   <div class="list-group">
+   <a  class="list-group-item active">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][5]['title']}}
+      </h4>
+   </a>
+   <a  class="list-group-item">
+      <h4 class="list-group-item-heading">
+         {{data[2]['index'][5]['zs']}}
+      </h4>
+      <p class="list-group-item-text">
+         {{data[2]['index'][5]['des']}}
+      </p>
+   </a>
+   </div>
+</div>
+</div>
+</div>
+</body>
+</html>
