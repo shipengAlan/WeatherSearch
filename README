@@ -1,0 +1,4 @@
+基于百度天气API返回的json数据
+基于python Flask框架
+前端Bootstrap
+虚拟环境virtualenv
